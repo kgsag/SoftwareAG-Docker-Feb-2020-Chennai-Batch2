@@ -8,3 +8,6 @@ docker update 996407b09b5c -c 50 //"CpuShares"
 docker wait kg_ubuntu
 
 docker exec -it 34412d49e95d /bin/bash
+
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
