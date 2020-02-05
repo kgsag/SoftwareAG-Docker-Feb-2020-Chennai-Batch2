@@ -1,3 +1,10 @@
 Test notes for Docker
 
 15 - 13.232.146.65
+
+
+docker update 996407b09b5c -c 50 //"CpuShares"
+
+docker wait kg_ubuntu
+
+docker exec -it 34412d49e95d /bin/bash
