@@ -1,0 +1,269 @@
+What is Docker?
+=======================
+	Container mgmt tool
+			--- Improve Efficiency
+			--- Reduces a Cost
+			--- Save time.
+
+Why Docker?
+
+
+What is Container?
+=============================
+TECH - 
+		USER SPACE with 
+				OWN	
+					NET
+					PMAP
+					MNT
+
+Container is a Process FOR host machine
+Each container get USER NS for ISOLATION.
+Each container get NET NS for SCA | AVA | SEC
+Each container get PMAP NS for Process ISOL
+Each container get MNT NS for MOUNT ISOL
+
+ 29  history
+   30  clear
+   31  which docker
+   32  ps -eaf | grep docker
+   33  ps -eaf
+   34  ps -eaf | grep docker
+   35  ps -eaf
+   36  clear
+   37  ps -eaf | grep docker
+   38  docker run -itd ubuntu
+   39  clear
+   40  docker ps
+   41  ps -eaf | grep docker
+   42  docker run -itd ubuntu
+   43  docker ps
+   44  ps -eaf | grep docker
+   45  clear
+   46  docker ps
+   47  docker attach 0ca0a1611255
+   48  docker ps
+   49  docker attach 02f949b80f38
+   50  clear
+   51  ls
+   52  clear
+   53  ls
+   54  docker ps
+   55  docker inspect 0ca0a1611255 | grep -i ip
+   56  docker inspect 02f949b80f38 | grep -i ip
+   57  ifconfig
+   58  clear
+   59  ps -eaf
+   60  clear
+   61  docker ps
+   62  docker exec 0ca0a1611255 df -kh
+   63  docker exec 0ca0a1611255 ps -eaf
+   64  docker exec 02f949b80f38 ps -eaf
+   65  clear
+   66  docker run -d jenkins
+   67  clear
+   68  docker run -d jenkins
+   69  docker ps -a
+   70  docker exec 59cbd87add00 ps -eaf
+   71  docker exec 2ddc31386c26 ps -eaf
+   72  clear
+   73  docker ps
+   74  docker exec 0ca0a1611255 df -kh
+   75  docker exec 02f949b80f38 df -kh
+   76  docker exec 02f949b80f38 ls /
+   77  docker exec 0ca0a1611255 ls /
+   78  docker exec 0ca0a1611255 touch /opt/rajesh.txt
+   79  docker exec 0ca0a1611255 ls /opt/rajesh.txt
+   80  docker exec 02f949b80f38 ls /opt/
+   81  history
+
+
+Business 
+Lightweight App run time env which is isolvated powered by NS with a help of docker.		
+
+
+CPU and RAM Mgmt - 	
+
+What are the NS which emp - RUN TiME APP --
+				USER
+				NET
+				PMAP
+				MNT
+CPU and RAM Mgmt - 	
+			CGROUP
+Capabalites
+
+=========================================================
+Other tool ->
+	https://www.devopsschool.com/blog/list-of-top-container-runtime-interface-
+
+projects/
+
+Artiectutre of Docker?
+==============================
+HUMEN -> DOCKER CLIENT ---(REST API)----> DOCKER DEAMON-----CONTAINERD--> KERNAL (NS)
+
+Component of Docker?
+==============================
+Docker Engine
+	 DOCKER CLIENT ---(REST API)----> DOCKER DEAMON
+Docker Registry 
+		--> Repositorie(S)
+		- Repository 1 - ONE IMAGE
+		- Repository 2 - ONE IMAGE
+		- Repository 3 - ONE IMAGE
+
+	PUB
+		hub.docker.com
+		GR
+		ECR
+	PVT	
+		Nexus
+		Artifactory
+		registry
+	
+Docker Image
+	Complete package of APP RUN TIME env*****
+	From one image --- yOu can get multiple container
+	Each Container share the same image.
+Docker Container
+	
+
+=============
+Demo time
+RHEL-7.5_HVM_GA-20180322-x86_64-1-Hourly2-GP2 (ami-5b673c34)
+13.234.240.167
+ec2-user
+Key - rajesh-mumbai.ppk
+
+STATEMENT
+====================
+DOCKER NEEDS ROOT OR ANY USER WHO IS PART OF GROUP CALLED "DOCKER"
+===============
+How to install Docker?
+https://www.devopsschool.com/tutorial/docker/install-config/
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-
+
+commuityedition-centos-rhel.html
+
+ 22  sudo yum install -y docker-ce
+   23  docker -v
+   24  sudo systemctl enable docker
+   25  sudo systemctl start docker
+   26  docker info
+   27  clear
+   28  ls
+   29  history
+
+=========================================
+Container WORKFLOW with Docker.
+=====================================================
+Create -> Start -> Stop -> Restart -> PAUSE -> UNPAUSE -> KILL -> Start -> stop -> 
+
+remove
+
+What APP YOu want to run?
+--------------
+Tomcat
+Jenkins
+mysql
+apache
+redis
+maven
+gradle
+nginx
+java
+es
+zoo
+kibana
+============IMAGE ==> Registry -> Repo
+====================================
+WORKFLOW OF DOCKER ?
+
+1. CHECK IMAGE in LR 
+		IF FOUND - APPLIED CONTAINER WORKFLOW
+		IF NOT FOUND - CHECK HUB and DOWNLOAD FROM HUB to LR.
+
+
+Container WORKFLOW with Docker.
+=====================================================
+Create -> Start -> Stop -> Restart -> PAUSE -> UNPAUSE ->KILL->Start ->stop-> remove
+
+RUN ==
+PULL + CREATE + START + BECOME
+
+
+PAUSE VS UNPAUSE
+https://www.devopsschool.com/blog/docker-pause-and-unpause-explanined/
+
+ 82  clear
+   83  docker images
+   84  docker pull jenkins
+   85  clear
+   86  ls
+   87  clear
+   88  cd
+   89  ls
+   90  docker images
+   91  dcoker ps
+   92  docker ps
+   93  docker ps -a
+   94  clear
+   95  ls
+   96  docker stop $(docker ps -a -q)
+   97  docker rm $(docker ps -a -q)
+   98  clear
+   99  docker ps
+  100  docker ps -a
+  101  docker create jenkins
+  102  docker ps
+  103  docker ps -a
+  104  docker start 504286a7dfd6
+  105  docker ps -a
+  106  docker stop 504286a7dfd6
+  107  docker ps -a
+  108  clear
+  109  docker restart 504286a7dfd6
+  110  docker ps -a
+  111  docker pause 504286a7dfd6
+  112  docker ps -a
+  113  docker unpause 504286a7dfd6
+  114  docker ps -a
+  115  docker kill 504286a7dfd6
+  116  docker ps -a
+  117  docker start 504286a7dfd6
+  118  docker ps -a
+  119  clear
+  120  docker stop 504286a7dfd6
+  121  docker ps -a
+  122  docker rm 504286a7dfd6
+  123  docker ps -a
+  124  history
+
+http://bit.ly/374O0E9
+
+
+ymohdriz
+shriramv
+kgayathri-dev
+bharanis86
+azarfaiz
+subbarayulun
+aathiraj10
+rajshoponline
+kgsag
+sadhiq83
+lavanya172
+pradeepa2194
+ShubhSingh
+
+
+clepg
+softsenthil
+
+
+
+
+
+
+
